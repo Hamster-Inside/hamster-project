@@ -1,0 +1,10 @@
+spring:
+  main:
+    banner-mode: off
+  output:
+    ansi:
+      enabled: ALWAYS
+  application:
+    name: Hamster-Project
+server:
+  port: 8080
