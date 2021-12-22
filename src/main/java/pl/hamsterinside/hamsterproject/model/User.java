@@ -2,17 +2,18 @@ package pl.hamsterinside.hamsterproject.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.apache.logging.log4j.util.Strings;
 import org.springframework.stereotype.Component;
 import javax.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
 
 
-import java.util.List;
+
 @Getter
 @Setter
-@Component
-@Table(name = "Users")
-public class Users {
+@Entity
+@Table(name = "users")
+public class User {
     @Id
     @GeneratedValue(generator = "inc")
     @GenericGenerator(name = "inc", strategy = "increment")
@@ -20,5 +21,11 @@ public class Users {
     private String name;
     private String surname;
     private int age;
-    private List<String> languages;
+
+
+    public static boolean isValidUser(User user){
+        return user != null
+                && Strings.isNotBlank(user.name)
+                && Strings.isNotBlank(user.surname);
+    }
 }
